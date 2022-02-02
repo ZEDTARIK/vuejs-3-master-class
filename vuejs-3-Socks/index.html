@@ -13,7 +13,7 @@
 <body>
     <div id="app">
         <div class="nav-bar"></div>
-
+        <div class="cart"> Cart :  {{ cart }}</div>
         <div class="product-display">
             <div class="product-container">
                 <div class="product-image">
@@ -25,17 +25,18 @@
 
                     <p v-if="inventory == 0"> In Stock </p>
                     <p v-else>Out Of Stock </p>
-                    
+
                     <ul>
                         <li v-for="detail in details">
                             {{ detail }}
                         </li>
                     </ul>
 
-                    <div v-for="variant in variants" :key="variant.id">
+                    <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)">
                         {{ variant.color }}
                     </div>
 
+                    <button class="button" type="button" @click="addToCart">Add To Cart</button>
                 </div>
             </div>
         </div>
